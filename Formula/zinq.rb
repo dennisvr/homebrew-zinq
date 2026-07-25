@@ -8,7 +8,7 @@
 #   - each sha256 stays 64 lowercase hex chars on the line right after its url
 # The placeholder zeros below are a valid stand-in until the first release.
 class Zinq < Formula
-  desc "jq-compatible JSON and YAML processor"
+  desc "JSON and YAML processor compatible with jq"
   homepage "https://github.com/dennisvr/homebrew-zinq"
   version "0.1.0"
   license "Apache-2.0"
