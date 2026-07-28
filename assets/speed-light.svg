@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="504" viewBox="0 0 880 504" role="img" aria-label="Time to run each query — lower is faster">
-<text x="16" y="22" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Time to run each query — lower is faster</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1254" viewBox="0 0 880 1254" role="img" aria-label="Time to run each benchmark — lower is faster">
+<text x="16" y="22" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Time to run each benchmark — lower is faster</text>
 <rect x="16" y="34" width="10" height="10" rx="2.5" fill="#2a78d6"/>
 <text x="31" y="43" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#52514e">zinq</text>
 <rect x="71.6" y="34" width="10" height="10" rx="2.5" fill="#eb6834"/>
@@ -78,4 +78,120 @@
 <rect x="284" y="476" width="449.6" height="11" rx="3" fill="#eb6834"/>
 <text x="726.6" y="485.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">8.646 s</text>
 <text x="16" y="475.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">gsub("[0-9]"; "#")</text>
+<line x1="804.0" y1="534" x2="804.0" y2="751" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="674.0" y1="534" x2="674.0" y2="751" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="544.0" y1="534" x2="544.0" y2="751" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="414.0" y1="534" x2="414.0" y2="751" stroke="#e6eaeb" stroke-width="1"/>
+<text x="16" y="514" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">REORDERING THE WHOLE DOCUMENT  ·  MILLISECONDS</text>
+<text x="284.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0</text>
+<text x="414.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">100</text>
+<text x="544.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">200</text>
+<text x="674.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">300</text>
+<text x="804.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">400</text>
+<line x1="284" y1="534" x2="804" y2="534" stroke="#dde2e4" stroke-width="1"/>
+<rect x="284" y="544" width="75.4" height="11" rx="3" fill="#2a78d6"/>
+<text x="366.4" y="553.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">58 ms</text>
+<rect x="284" y="558" width="444.6" height="11" rx="3" fill="#eb6834"/>
+<text x="721.6" y="567.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">342 ms</text>
+<text x="16" y="557.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">max_by(.score) | .id</text>
+<rect x="284" y="580" width="76.7" height="11" rx="3" fill="#2a78d6"/>
+<text x="367.7" y="589.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">59 ms</text>
+<rect x="284" y="594" width="442.0" height="11" rx="3" fill="#eb6834"/>
+<text x="719.0" y="603.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">340 ms</text>
+<text x="16" y="593.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">min_by(.score) | .id</text>
+<rect x="284" y="616" width="110.5" height="11" rx="3" fill="#2a78d6"/>
+<text x="401.5" y="625.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">85 ms</text>
+<rect x="284" y="630" width="500.5" height="11" rx="3" fill="#eb6834"/>
+<text x="777.5" y="639.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">385 ms</text>
+<text x="16" y="629.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">sort_by(.name) | last</text>
+<rect x="284" y="652" width="110.5" height="11" rx="3" fill="#2a78d6"/>
+<text x="401.5" y="661.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">85 ms</text>
+<rect x="284" y="666" width="491.4" height="11" rx="3" fill="#eb6834"/>
+<text x="768.4" y="675.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">378 ms</text>
+<text x="16" y="665.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">unique_by(.name) | length</text>
+<rect x="284" y="688" width="133.9" height="11" rx="3" fill="#2a78d6"/>
+<text x="424.9" y="697.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">103 ms</text>
+<rect x="284" y="702" width="510.9" height="11" rx="3" fill="#eb6834"/>
+<text x="787.9" y="711.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">393 ms</text>
+<text x="16" y="701.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">group_by(.name) | length</text>
+<rect x="284" y="724" width="193.7" height="11" rx="3" fill="#2a78d6"/>
+<text x="484.7" y="733.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">149 ms</text>
+<rect x="284" y="738" width="475.8" height="11" rx="3" fill="#eb6834"/>
+<text x="752.8" y="747.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">366 ms</text>
+<text x="16" y="737.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">sort_by(.id) | last</text>
+<line x1="804.0" y1="796" x2="804.0" y2="977" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="630.7" y1="796" x2="630.7" y2="977" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="457.3" y1="796" x2="457.3" y2="977" stroke="#e6eaeb" stroke-width="1"/>
+<text x="16" y="776" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">COLLECTING EVERY PATH AT ONCE  ·  MILLISECONDS</text>
+<text x="284.0" y="790" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0</text>
+<text x="457.3" y="790" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">100</text>
+<text x="630.7" y="790" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">200</text>
+<text x="804.0" y="790" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">300</text>
+<line x1="284" y1="796" x2="804" y2="796" stroke="#dde2e4" stroke-width="1"/>
+<rect x="284" y="806" width="50.3" height="11" rx="3" fill="#2a78d6"/>
+<text x="341.3" y="815.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">29 ms</text>
+<rect x="284" y="820" width="208.0" height="11" rx="3" fill="#eb6834"/>
+<text x="499.0" y="829.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">120 ms</text>
+<text x="16" y="819.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[paths] | length</text>
+<rect x="284" y="842" width="58.9" height="11" rx="3" fill="#2a78d6"/>
+<text x="349.9" y="851.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">34 ms</text>
+<rect x="284" y="856" width="232.3" height="11" rx="3" fill="#eb6834"/>
+<text x="523.3" y="865.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">134 ms</text>
+<text x="16" y="855.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">reduce (inputs|paths) as $p</text>
+<rect x="284" y="878" width="60.7" height="11" rx="3" fill="#2a78d6"/>
+<text x="351.7" y="887.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">35 ms</text>
+<rect x="284" y="892" width="157.7" height="11" rx="3" fill="#eb6834"/>
+<text x="448.7" y="901.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">91 ms</text>
+<text x="16" y="891.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[path(..)] | length</text>
+<rect x="284" y="914" width="102.3" height="11" rx="3" fill="#2a78d6"/>
+<text x="393.3" y="923.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">59 ms</text>
+<rect x="284" y="928" width="516.5" height="11" rx="3" fill="#eb6834"/>
+<text x="793.5" y="937.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">298 ms</text>
+<text x="16" y="927.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[tostream] | length</text>
+<rect x="284" y="950" width="114.4" height="11" rx="3" fill="#2a78d6"/>
+<text x="405.4" y="959.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">66 ms</text>
+<rect x="284" y="964" width="216.7" height="11" rx="3" fill="#eb6834"/>
+<text x="507.7" y="973.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">125 ms</text>
+<text x="16" y="963.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[paths(type=="number")]</text>
+<line x1="804.0" y1="1022" x2="804.0" y2="1239" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="674.0" y1="1022" x2="674.0" y2="1239" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="544.0" y1="1022" x2="544.0" y2="1239" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="414.0" y1="1022" x2="414.0" y2="1239" stroke="#e6eaeb" stroke-width="1"/>
+<text x="16" y="1002" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">STREAMING, WITHOUT BUILDING THE DOCUMENT  ·  SECONDS</text>
+<text x="284.0" y="1016" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0</text>
+<text x="414.0" y="1016" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0.5</text>
+<text x="544.0" y="1016" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">1</text>
+<text x="674.0" y="1016" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">1.5</text>
+<text x="804.0" y="1016" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">2</text>
+<line x1="284" y1="1022" x2="804" y2="1022" stroke="#dde2e4" stroke-width="1"/>
+<rect x="284" y="1032" width="1.5" height="11" rx="3" fill="#2a78d6"/>
+<text x="292.5" y="1041.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">0.003 s</text>
+<rect x="284" y="1046" width="1.5" height="11" rx="3" fill="#eb6834"/>
+<text x="292.5" y="1055.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">0.003 s</text>
+<text x="16" y="1045.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">--stream -n first(inputs)</text>
+<rect x="284" y="1068" width="4.9" height="11" rx="3" fill="#2a78d6"/>
+<text x="295.9" y="1077.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">0.019 s</text>
+<rect x="284" y="1082" width="45.8" height="11" rx="3" fill="#eb6834"/>
+<text x="336.8" y="1091.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">0.176 s</text>
+<text x="16" y="1081.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">paths</text>
+<rect x="284" y="1104" width="7.0" height="11" rx="3" fill="#2a78d6"/>
+<text x="298.0" y="1113.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">0.027 s</text>
+<rect x="284" y="1118" width="103.5" height="11" rx="3" fill="#eb6834"/>
+<text x="394.5" y="1127.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">0.398 s</text>
+<text x="16" y="1117.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">tostream</text>
+<rect x="284" y="1140" width="11.7" height="11" rx="3" fill="#2a78d6"/>
+<text x="302.7" y="1149.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">0.045 s</text>
+<rect x="284" y="1154" width="90.7" height="11" rx="3" fill="#eb6834"/>
+<text x="381.7" y="1163.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">0.349 s</text>
+<text x="16" y="1153.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">fromstream(inputs)</text>
+<rect x="284" y="1176" width="280.8" height="11" rx="3" fill="#2a78d6"/>
+<text x="571.8" y="1185.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">1.080 s</text>
+<rect x="284" y="1190" width="443.0" height="11" rx="3" fill="#eb6834"/>
+<text x="720.0" y="1199.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">1.704 s</text>
+<text x="16" y="1189.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">--stream .</text>
+<rect x="284" y="1212" width="286.8" height="11" rx="3" fill="#2a78d6"/>
+<text x="577.8" y="1221.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">1.103 s</text>
+<rect x="284" y="1226" width="466.7" height="11" rx="3" fill="#eb6834"/>
+<text x="743.7" y="1235.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">1.795 s</text>
+<text x="16" y="1225.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">--stream select(length==2)</text>
 </svg>

@@ -4,28 +4,33 @@
 
 ## Performance
 
-An 18 MB / 200k-record document, best of five interleaved rounds on an Apple
-M3 Max, against jq 1.8.2. Every workload's output is compared to jq's byte for
-byte before it is timed — a faster number means nothing if the bytes differ.
+All 27 benchmarks, best of five interleaved rounds on an Apple M3 Max, against
+jq 1.8.2. Every one is compared to jq's output byte for byte before it is timed
+— a faster number means nothing if the bytes differ. Each group carries its own
+axis, because a suite spanning 3 ms to 8.6 s cannot share one and stay readable.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/speed-dark.svg">
-  <img alt="Time to run each query, zinq against jq 1.8.2. zinq is faster on every workload, from 0.027 s against 0.264 s on .[0] to 0.441 s against 8.646 s on gsub." src="assets/speed-light.svg" width="880">
+  <img alt="Time to run each of 27 benchmarks, zinq against jq 1.8.2, grouped into queries, rewriting, reordering, path collection and streaming. zinq is faster on every one, from 27 ms against 264 ms on .[0] to 0.441 s against 8.646 s on gsub." src="assets/speed-light.svg" width="880">
 </picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/memory-dark.svg">
-  <img alt="Peak resident memory for the same runs. zinq holds less on every workload, from 25 MB against 220 MB on .[0] to 199 MB against 283 MB on select-and-construct." src="assets/memory-light.svg" width="880">
+  <img alt="Peak resident memory for the same 27 runs. zinq holds less on 20 of them; jq holds less when collecting every path at once and under --stream." src="assets/memory-light.svg" width="880">
 </picture>
 
-Across the full suite of 27 workloads — which also covers `sort_by`/`group_by`,
-path collection and `--stream` — zinq runs them in **4.4 s against jq's 21.0 s**,
-at a median peak of **116 MB against 234 MB**. Two places jq holds less memory:
-collecting every path of a document at once, and `--stream`, where zinq's figure
-is the input mapping rather than its heap (piped, the same workload peaks at
-2.6 MB against jq's 3.5).
+Together the 27 run in **4.4 s against jq's 21.0 s**, at a median peak of
+**116 MB against 234 MB**. jq holds less memory in two places, both visible
+above: collecting every path of a document at once — where the cost is two
+120-byte nodes per path against jq's 16-byte value, 170k of them live — and
+`--stream`, where zinq's figure is the input **mapping** rather than its heap.
+Piped, where there is no file to map, that same workload peaks at 2.6 MB
+against jq's 3.5.
 
-| Workload | zinq | jq | zinq peak | jq peak |
+<details>
+<summary>Every measurement</summary>
+
+| Benchmark | zinq | jq | zinq peak | jq peak |
 |---|---:|---:|---:|---:|
 | `.[0]` | 0.027 s | 0.264 s | 25 MB | 220 MB |
 | `[.[] \| .tags \| length]` | 0.043 s | 0.315 s | 66 MB | 232 MB |
@@ -33,12 +38,33 @@ is the input mapping rather than its heap (piped, the same workload peaks at
 | `[.[] \| .score] \| sort \| .[-1]` | 0.084 s | 0.452 s | 125 MB | 234 MB |
 | `.` (pretty-print) | 0.087 s | 0.931 s | 116 MB | 235 MB |
 | `test("item-(?=0000)")` | 0.116 s | 0.570 s | 64 MB | 222 MB |
-| `[.[] \| select(.active)]` | 0.142 s | 0.511 s | 199 MB | 283 MB |
+| `[.[] \| select(.active) \| {name, score}]` | 0.142 s | 0.511 s | 199 MB | 283 MB |
 | `[.[] \| .tags[]] \| unique` | 0.158 s | 0.848 s | 156 MB | 259 MB |
 | `test("^item-0000[0-9]3$")` | 0.194 s | 0.646 s | 64 MB | 221 MB |
 | `gsub("[0-9]"; "#")` | 0.441 s | 8.646 s | 99 MB | 251 MB |
+| `max_by(.score) \| .id` | 0.058 s | 0.342 s | 126 MB | 238 MB |
+| `min_by(.score) \| .id` | 0.059 s | 0.340 s | 138 MB | 238 MB |
+| `sort_by(.name) \| last` | 0.085 s | 0.385 s | 159 MB | 258 MB |
+| `unique_by(.name) \| length` | 0.085 s | 0.378 s | 159 MB | 256 MB |
+| `group_by(.name) \| length` | 0.103 s | 0.393 s | 230 MB | 315 MB |
+| `sort_by(.id) \| last` | 0.149 s | 0.366 s | 183 MB | 257 MB |
+| `[paths] \| length` ¹ | 0.029 s | 0.120 s | 71 MB | 50 MB |
+| `reduce (inputs\|paths) as $p (0;.+1)` ¹ | 0.034 s | 0.134 s | 12 MB | 25 MB |
+| `[path(..)] \| length` ¹ | 0.035 s | 0.091 s | 72 MB | 50 MB |
+| `[tostream] \| length` ¹ | 0.059 s | 0.298 s | 146 MB | 63 MB |
+| `[paths(type=="number")]` ¹ | 0.066 s | 0.125 s | 71 MB | 33 MB |
+| `--stream -n first(inputs)` | 0.003 s | 0.003 s | 1.8 MB | 2.4 MB |
+| `paths` ¹ | 0.019 s | 0.176 s | 12 MB | 25 MB |
+| `tostream` ¹ | 0.027 s | 0.398 s | 13 MB | 26 MB |
+| `fromstream(inputs)` ¹ | 0.045 s | 0.349 s | 37 MB | 27 MB |
+| `--stream .` | 1.080 s | 1.704 s | 20 MB | 4 MB |
+| `--stream select(length==2)` | 1.103 s | 1.795 s | 20 MB | 4 MB |
 
-Measured 2026-07-28.
+¹ On a 1.8 MB / 20k-record corpus; everything else on 18 MB / 200k records.
+
+</details>
+
+Measured 2026-07-28 against jq 1.8.2.
 
 ## Install
 

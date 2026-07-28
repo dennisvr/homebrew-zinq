@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="422" viewBox="0 0 880 422" role="img" aria-label="Peak memory for the same runs — lower is lighter">
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="1254" viewBox="0 0 880 1254" role="img" aria-label="Peak memory for the same runs — lower is lighter">
 <text x="16" y="22" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="15" font-weight="600" fill="#0b0b0b">Peak memory for the same runs — lower is lighter</text>
 <rect x="16" y="34" width="10" height="10" rx="2.5" fill="#2a78d6"/>
 <text x="31" y="43" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11.5" fill="#52514e">zinq</text>
@@ -10,7 +10,7 @@
 <line x1="544.0" y1="82" x2="544.0" y2="407" stroke="#e6eaeb" stroke-width="1"/>
 <line x1="457.3" y1="82" x2="457.3" y2="407" stroke="#e6eaeb" stroke-width="1"/>
 <line x1="370.7" y1="82" x2="370.7" y2="407" stroke="#e6eaeb" stroke-width="1"/>
-<text x="16" y="62" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">PEAK RESIDENT SET AT EXIT  ·  MB</text>
+<text x="16" y="62" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">QUERIES, PROJECTIONS AND REGEX  ·  MB</text>
 <text x="284.0" y="76" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0</text>
 <text x="370.7" y="76" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">50</text>
 <text x="457.3" y="76" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">100</text>
@@ -29,39 +29,169 @@
 <rect x="284" y="142" width="401.6" height="11" rx="3" fill="#eb6834"/>
 <text x="692.6" y="151.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">232 MB</text>
 <text x="16" y="141.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[.[] | .tags | length]</text>
-<rect x="284" y="164" width="111.3" height="11" rx="3" fill="#2a78d6"/>
-<text x="402.3" y="173.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">64.2 MB</text>
-<rect x="284" y="178" width="382.9" height="11" rx="3" fill="#eb6834"/>
-<text x="673.9" y="187.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">221 MB</text>
-<text x="16" y="177.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">test("^item-0000[0-9]3$")</text>
-<rect x="284" y="200" width="171.9" height="11" rx="3" fill="#2a78d6"/>
-<text x="462.9" y="209.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">99.2 MB</text>
-<rect x="284" y="214" width="434.9" height="11" rx="3" fill="#eb6834"/>
-<text x="711.9" y="223.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">251 MB</text>
-<text x="16" y="213.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">gsub("[0-9]"; "#")</text>
-<rect x="284" y="236" width="176.8" height="11" rx="3" fill="#2a78d6"/>
-<text x="467.8" y="245.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">102 MB</text>
-<rect x="284" y="250" width="397.8" height="11" rx="3" fill="#eb6834"/>
-<text x="688.8" y="259.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">230 MB</text>
-<text x="16" y="249.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[.[] | .name]</text>
-<rect x="284" y="272" width="200.4" height="11" rx="3" fill="#2a78d6"/>
-<text x="491.4" y="281.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">116 MB</text>
-<rect x="284" y="286" width="406.8" height="11" rx="3" fill="#eb6834"/>
-<text x="697.8" y="295.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">235 MB</text>
-<text x="16" y="285.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">. (pretty-print)</text>
-<rect x="284" y="308" width="216.8" height="11" rx="3" fill="#2a78d6"/>
-<text x="507.8" y="317.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">125 MB</text>
-<rect x="284" y="322" width="404.7" height="11" rx="3" fill="#eb6834"/>
-<text x="695.7" y="331.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">234 MB</text>
-<text x="16" y="321.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[.[] | .score] | sort | .[-1]</text>
+<rect x="284" y="164" width="176.8" height="11" rx="3" fill="#2a78d6"/>
+<text x="467.8" y="173.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">102 MB</text>
+<rect x="284" y="178" width="397.8" height="11" rx="3" fill="#eb6834"/>
+<text x="688.8" y="187.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">230 MB</text>
+<text x="16" y="177.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[.[] | .name]</text>
+<rect x="284" y="200" width="216.8" height="11" rx="3" fill="#2a78d6"/>
+<text x="507.8" y="209.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">125 MB</text>
+<rect x="284" y="214" width="404.7" height="11" rx="3" fill="#eb6834"/>
+<text x="695.7" y="223.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">234 MB</text>
+<text x="16" y="213.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[.[] | .score] | sort | .[-1]</text>
+<rect x="284" y="236" width="200.4" height="11" rx="3" fill="#2a78d6"/>
+<text x="491.4" y="245.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">116 MB</text>
+<rect x="284" y="250" width="406.8" height="11" rx="3" fill="#eb6834"/>
+<text x="697.8" y="259.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">235 MB</text>
+<text x="16" y="249.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">. (pretty-print)</text>
+<rect x="284" y="272" width="111.3" height="11" rx="3" fill="#2a78d6"/>
+<text x="402.3" y="281.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">64.2 MB</text>
+<rect x="284" y="286" width="385.3" height="11" rx="3" fill="#eb6834"/>
+<text x="676.3" y="295.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">222 MB</text>
+<text x="16" y="285.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">test("item-(?=0000)")</text>
+<rect x="284" y="308" width="344.6" height="11" rx="3" fill="#2a78d6"/>
+<text x="635.6" y="317.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">199 MB</text>
+<rect x="284" y="322" width="490.4" height="11" rx="3" fill="#eb6834"/>
+<text x="767.4" y="331.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">283 MB</text>
+<text x="16" y="321.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[.[] | select(.active)]</text>
 <rect x="284" y="344" width="271.1" height="11" rx="3" fill="#2a78d6"/>
 <text x="562.1" y="353.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">156 MB</text>
 <rect x="284" y="358" width="449.5" height="11" rx="3" fill="#eb6834"/>
 <text x="726.5" y="367.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">259 MB</text>
 <text x="16" y="357.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[.[] | .tags[]] | unique</text>
-<rect x="284" y="380" width="344.6" height="11" rx="3" fill="#2a78d6"/>
-<text x="635.6" y="389.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">199 MB</text>
-<rect x="284" y="394" width="490.4" height="11" rx="3" fill="#eb6834"/>
-<text x="767.4" y="403.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">283 MB</text>
-<text x="16" y="393.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[.[] | select(.active)]</text>
+<rect x="284" y="380" width="111.3" height="11" rx="3" fill="#2a78d6"/>
+<text x="402.3" y="389.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">64.2 MB</text>
+<rect x="284" y="394" width="382.9" height="11" rx="3" fill="#eb6834"/>
+<text x="673.9" y="403.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">221 MB</text>
+<text x="16" y="393.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">test("^item-0000[0-9]3$")</text>
+<line x1="804.0" y1="452" x2="804.0" y2="489" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="717.3" y1="452" x2="717.3" y2="489" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="630.7" y1="452" x2="630.7" y2="489" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="544.0" y1="452" x2="544.0" y2="489" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="457.3" y1="452" x2="457.3" y2="489" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="370.7" y1="452" x2="370.7" y2="489" stroke="#e6eaeb" stroke-width="1"/>
+<text x="16" y="432" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">REWRITING EVERY RECORD  ·  MB</text>
+<text x="284.0" y="446" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0</text>
+<text x="370.7" y="446" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">50</text>
+<text x="457.3" y="446" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">100</text>
+<text x="544.0" y="446" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">150</text>
+<text x="630.7" y="446" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">200</text>
+<text x="717.3" y="446" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">250</text>
+<text x="804.0" y="446" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">300</text>
+<line x1="284" y1="452" x2="804" y2="452" stroke="#dde2e4" stroke-width="1"/>
+<rect x="284" y="462" width="171.9" height="11" rx="3" fill="#2a78d6"/>
+<text x="462.9" y="471.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">99.2 MB</text>
+<rect x="284" y="476" width="434.9" height="11" rx="3" fill="#eb6834"/>
+<text x="711.9" y="485.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">251 MB</text>
+<text x="16" y="475.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">gsub("[0-9]"; "#")</text>
+<line x1="804.0" y1="534" x2="804.0" y2="751" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="674.0" y1="534" x2="674.0" y2="751" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="544.0" y1="534" x2="544.0" y2="751" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="414.0" y1="534" x2="414.0" y2="751" stroke="#e6eaeb" stroke-width="1"/>
+<text x="16" y="514" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">REORDERING THE WHOLE DOCUMENT  ·  MB</text>
+<text x="284.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0</text>
+<text x="414.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">100</text>
+<text x="544.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">200</text>
+<text x="674.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">300</text>
+<text x="804.0" y="528" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">400</text>
+<line x1="284" y1="534" x2="804" y2="534" stroke="#dde2e4" stroke-width="1"/>
+<rect x="284" y="544" width="163.4" height="11" rx="3" fill="#2a78d6"/>
+<text x="454.4" y="553.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">126 MB</text>
+<rect x="284" y="558" width="309.8" height="11" rx="3" fill="#eb6834"/>
+<text x="600.8" y="567.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">238 MB</text>
+<text x="16" y="557.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">max_by(.score) | .id</text>
+<rect x="284" y="580" width="179.0" height="11" rx="3" fill="#2a78d6"/>
+<text x="470.0" y="589.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">138 MB</text>
+<rect x="284" y="594" width="308.9" height="11" rx="3" fill="#eb6834"/>
+<text x="599.9" y="603.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">238 MB</text>
+<text x="16" y="593.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">min_by(.score) | .id</text>
+<rect x="284" y="616" width="206.7" height="11" rx="3" fill="#2a78d6"/>
+<text x="497.7" y="625.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">159 MB</text>
+<rect x="284" y="630" width="335.3" height="11" rx="3" fill="#eb6834"/>
+<text x="626.3" y="639.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">258 MB</text>
+<text x="16" y="629.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">sort_by(.name) | last</text>
+<rect x="284" y="652" width="207.0" height="11" rx="3" fill="#2a78d6"/>
+<text x="498.0" y="661.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">159 MB</text>
+<rect x="284" y="666" width="332.7" height="11" rx="3" fill="#eb6834"/>
+<text x="623.7" y="675.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">256 MB</text>
+<text x="16" y="665.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">unique_by(.name) | length</text>
+<rect x="284" y="688" width="298.6" height="11" rx="3" fill="#2a78d6"/>
+<text x="589.6" y="697.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">230 MB</text>
+<rect x="284" y="702" width="409.2" height="11" rx="3" fill="#eb6834"/>
+<text x="700.2" y="711.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">315 MB</text>
+<text x="16" y="701.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">group_by(.name) | length</text>
+<rect x="284" y="724" width="237.2" height="11" rx="3" fill="#2a78d6"/>
+<text x="528.2" y="733.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">182 MB</text>
+<rect x="284" y="738" width="333.8" height="11" rx="3" fill="#eb6834"/>
+<text x="624.8" y="747.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">257 MB</text>
+<text x="16" y="737.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">sort_by(.id) | last</text>
+<line x1="804.0" y1="796" x2="804.0" y2="977" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="630.7" y1="796" x2="630.7" y2="977" stroke="#e6eaeb" stroke-width="1"/>
+<line x1="457.3" y1="796" x2="457.3" y2="977" stroke="#e6eaeb" stroke-width="1"/>
+<text x="16" y="776" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">COLLECTING EVERY PATH AT ONCE  ·  MB</text>
+<text x="284.0" y="790" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0</text>
+<text x="457.3" y="790" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">50</text>
+<text x="630.7" y="790" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">100</text>
+<text x="804.0" y="790" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">150</text>
+<line x1="284" y1="796" x2="804" y2="796" stroke="#dde2e4" stroke-width="1"/>
+<rect x="284" y="806" width="245.1" height="11" rx="3" fill="#2a78d6"/>
+<text x="536.1" y="815.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">70.7 MB</text>
+<rect x="284" y="820" width="173.3" height="11" rx="3" fill="#eb6834"/>
+<text x="464.3" y="829.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">50.0 MB</text>
+<text x="16" y="819.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[paths] | length</text>
+<rect x="284" y="842" width="40.6" height="11" rx="3" fill="#2a78d6"/>
+<text x="331.6" y="851.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">11.7 MB</text>
+<rect x="284" y="856" width="86.3" height="11" rx="3" fill="#eb6834"/>
+<text x="377.3" y="865.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">24.9 MB</text>
+<text x="16" y="855.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">reduce (inputs|paths) as $p</text>
+<rect x="284" y="878" width="249.9" height="11" rx="3" fill="#2a78d6"/>
+<text x="540.9" y="887.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">72.1 MB</text>
+<rect x="284" y="892" width="174.4" height="11" rx="3" fill="#eb6834"/>
+<text x="465.4" y="901.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">50.3 MB</text>
+<text x="16" y="891.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[path(..)] | length</text>
+<rect x="284" y="914" width="506.8" height="11" rx="3" fill="#2a78d6"/>
+<text x="783.8" y="923.5" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#ffffff">146 MB</text>
+<rect x="284" y="928" width="219.8" height="11" rx="3" fill="#eb6834"/>
+<text x="510.8" y="937.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">63.4 MB</text>
+<text x="16" y="927.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[tostream] | length</text>
+<rect x="284" y="950" width="245.8" height="11" rx="3" fill="#2a78d6"/>
+<text x="536.8" y="959.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">70.9 MB</text>
+<rect x="284" y="964" width="113.7" height="11" rx="3" fill="#eb6834"/>
+<text x="404.7" y="973.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">32.8 MB</text>
+<text x="16" y="963.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">[paths(type=="number")]</text>
+<line x1="804.0" y1="1022" x2="804.0" y2="1239" stroke="#e6eaeb" stroke-width="1"/>
+<text x="16" y="1002" font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif" font-size="11" letter-spacing="1.1" fill="#7c7d78">STREAMING, WITHOUT BUILDING THE DOCUMENT  ·  MB</text>
+<text x="284.0" y="1016" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">0</text>
+<text x="804.0" y="1016" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#7c7d78">50</text>
+<line x1="284" y1="1022" x2="804" y2="1022" stroke="#dde2e4" stroke-width="1"/>
+<rect x="284" y="1032" width="18.7" height="11" rx="3" fill="#2a78d6"/>
+<text x="309.7" y="1041.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">1.8 MB</text>
+<rect x="284" y="1046" width="25.0" height="11" rx="3" fill="#eb6834"/>
+<text x="316.0" y="1055.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">2.4 MB</text>
+<text x="16" y="1045.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">--stream -n first(inputs)</text>
+<rect x="284" y="1068" width="121.7" height="11" rx="3" fill="#2a78d6"/>
+<text x="412.7" y="1077.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">11.7 MB</text>
+<rect x="284" y="1082" width="256.9" height="11" rx="3" fill="#eb6834"/>
+<text x="547.9" y="1091.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">24.7 MB</text>
+<text x="16" y="1081.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">paths</text>
+<rect x="284" y="1104" width="132.1" height="11" rx="3" fill="#2a78d6"/>
+<text x="423.1" y="1113.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">12.7 MB</text>
+<rect x="284" y="1118" width="271.4" height="11" rx="3" fill="#eb6834"/>
+<text x="562.4" y="1127.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">26.1 MB</text>
+<text x="16" y="1117.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">tostream</text>
+<rect x="284" y="1140" width="383.8" height="11" rx="3" fill="#2a78d6"/>
+<text x="674.8" y="1149.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">36.9 MB</text>
+<rect x="284" y="1154" width="275.6" height="11" rx="3" fill="#eb6834"/>
+<text x="566.6" y="1163.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">26.5 MB</text>
+<text x="16" y="1153.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">fromstream(inputs)</text>
+<rect x="284" y="1176" width="208.0" height="11" rx="3" fill="#2a78d6"/>
+<text x="499.0" y="1185.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">20.0 MB</text>
+<rect x="284" y="1190" width="42.6" height="11" rx="3" fill="#eb6834"/>
+<text x="333.6" y="1199.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">4.1 MB</text>
+<text x="16" y="1189.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">--stream .</text>
+<rect x="284" y="1212" width="210.1" height="11" rx="3" fill="#2a78d6"/>
+<text x="501.1" y="1221.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">20.2 MB</text>
+<rect x="284" y="1226" width="43.7" height="11" rx="3" fill="#eb6834"/>
+<text x="334.7" y="1235.5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="10" fill="#52514e">4.2 MB</text>
+<text x="16" y="1225.0" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="11" fill="#0b0b0b">--stream select(length==2)</text>
 </svg>
