@@ -2,12 +2,16 @@
 
 `zinq` is a jq-compatible JSON and YAML processor.
 
+It aims to be a drop-in replacement for jq, and currently supports 217 of
+jq 1.8.2's 226 builtins; the rest are the `@base64`/`@csv`/`@tsv`/`@uri`/`@sh`
+format family, `debug`, `stderr`, `input_line_number`, `JOIN` and three
+introspection builtins. Everywhere it answers, it is byte-identical to jq,
+held there by 515 differential test cases and jq's own vendored corpus.
+
 ## Performance
 
-All 27 benchmarks, best of five interleaved rounds on an Apple M3 Max, against
-jq 1.8.2. Every one is compared to jq's output byte for byte before it is timed
-— a faster number means nothing if the bytes differ. Each group carries its own
-axis, because a suite spanning 3 ms to 8.6 s cannot share one and stay readable.
+Every JSON benchmark is compared to jq's output byte for byte before it is
+timed — a faster number means nothing if the bytes differ.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/speed-dark.svg">
@@ -20,12 +24,11 @@ axis, because a suite spanning 3 ms to 8.6 s cannot share one and stay readable.
 </picture>
 
 Together the 27 run in **4.4 s against jq's 21.0 s**, at a median peak of
-**116 MB against 234 MB**. jq holds less memory in two places, both visible
-above: collecting every path of a document at once — where the cost is two
-120-byte nodes per path against jq's 16-byte value, 170k of them live — and
-`--stream`, where zinq's figure is the input **mapping** rather than its heap.
-Piped, where there is no file to map, that same workload peaks at 2.6 MB
-against jq's 3.5.
+**116 MB against 234 MB**. Where jq holds less: collecting every path at once
+costs two 120-byte nodes per path against jq's 16-byte value, 170k of them
+live; and under `--stream` zinq's figure is the input **mapping** rather than
+its heap — piped, with no file to map, that workload peaks at 2.6 MB against
+jq's 3.5.
 
 <details>
 <summary>Every measurement</summary>
@@ -64,7 +67,22 @@ against jq's 3.5.
 
 </details>
 
-Measured 2026-07-28 against jq 1.8.2.
+### YAML
+
+The same filters read YAML directly, with no conversion step in front of them —
+here over the same corpus rendered as 20 MB of block-style YAML.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/yaml-speed-dark.svg">
+  <img alt="Time to run four YAML workloads, zinq against yq (Go) 4.53.3, over 20 MB of block-style YAML. zinq is faster on all four: 0.236 s against 45.315 s projecting a field, 0.205 against 1.179 parse-bound, 0.216 against 1.198 on an edit, and 0.407 against 4.092 rendering YAML back out." src="assets/yaml-speed-light.svg" width="880">
+</picture>
+
+Projection is an outlier for a reason worth discounting: the gap is yq's `[...]`
+array-collect, not its parser — the same field taken as a stream costs it 2.3 s.
+Read the other three as the fair comparison. Peak RSS is not charted here; the
+YAML harness times its rows but does not record it.
+
+Measured 2026-07-28 against jq 1.8.2 and yq (Go) 4.53.3.
 
 ## Install
 
