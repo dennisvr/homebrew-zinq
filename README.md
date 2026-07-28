@@ -24,11 +24,10 @@ timed — a faster number means nothing if the bytes differ.
 </picture>
 
 Together the 27 run in **4.4 s against jq's 21.0 s**, at a median peak of
-**116 MB against 234 MB**. Where jq holds less: collecting every path at once
-costs two 120-byte nodes per path against jq's 16-byte value, 170k of them
-live; and under `--stream` zinq's figure is the input **mapping** rather than
-its heap — piped, with no file to map, that workload peaks at 2.6 MB against
-jq's 3.5.
+**116 MB against 234 MB**. Two kinds of workload go the other way: collecting
+every path of a document at once, and `--stream`. The `--stream` figure counts
+the input file zinq maps into memory rather than what it allocates — read from
+a pipe instead, the same workload peaks at 2.6 MB against jq's 3.5.
 
 <details>
 <summary>Every measurement</summary>
@@ -77,10 +76,10 @@ here over the same corpus rendered as 20 MB of block-style YAML.
   <img alt="Time to run four YAML workloads, zinq against yq (Go) 4.53.3, over 20 MB of block-style YAML. zinq is faster on all four: 0.236 s against 45.315 s projecting a field, 0.205 against 1.179 parse-bound, 0.216 against 1.198 on an edit, and 0.407 against 4.092 rendering YAML back out." src="assets/yaml-speed-light.svg" width="880">
 </picture>
 
-Projection is an outlier for a reason worth discounting: the gap is yq's `[...]`
-array-collect, not its parser — the same field taken as a stream costs it 2.3 s.
-Read the other three as the fair comparison. Peak RSS is not charted here; the
-YAML harness times its rows but does not record it.
+The first workload overstates the gap: yq is slow at collecting results into an
+array specifically, and asked for the same field as a stream it takes 2.3 s
+rather than 45. Read the other three as the fair comparison. Memory is not
+measured for the YAML runs.
 
 Measured 2026-07-28 against jq 1.8.2 and yq (Go) 4.53.3.
 
@@ -105,6 +104,26 @@ Once the tap is trusted, the one-line form works too:
 ```sh
 brew install dennisvr/zinq/zinq
 ```
+
+## Usage
+
+The filters and flags are jq's, so existing invocations carry over:
+
+```sh
+zinq '.[] | select(.active) | .name' users.json
+zinq -r '.[].name' users.json
+curl -s https://api.example.com/items | zinq -c '.[0]'
+```
+
+YAML needs no conversion step in front of it. Files ending `.yaml`/`.yml` are
+detected by suffix; `--yaml-input` and `--yaml-output` force it either way:
+
+```sh
+zinq '.spec.replicas' deploy.yaml
+zinq --yaml-output '.metadata.labels.env = "prod"' deploy.yaml
+```
+
+`zinq --help` lists every flag and the filters implemented so far.
 
 ## Upgrade & uninstall
 
