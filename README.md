@@ -2,11 +2,17 @@
 
 `zinq` is a jq-compatible JSON and YAML processor.
 
-It aims to be a drop-in replacement for jq, and currently supports 217 of
-jq 1.8.2's 226 builtins; the rest are the `@base64`/`@csv`/`@tsv`/`@uri`/`@sh`
-format family, `debug`, `stderr`, `input_line_number`, `JOIN` and three
-introspection builtins. Everywhere it answers, it is byte-identical to jq,
-held there by 515 differential test cases and jq's own vendored corpus.
+Existing jq scripts should just work: same filters, same flags, same output,
+same exit codes. Every jq 1.8.2 builtin is there except `input_line_number`,
+and the output is checked against real jq by differential tests and by jq's
+own test suite.
+
+It doesn't inherit your jq setup, though. `~/.jq` isn't read, and a few other
+things differ; they're listed under [Gaps and differences](#gaps-and-differences).
+
+> **zinq is beta.** It's pre-1.0 and hasn't seen much production use yet. Check
+> its output before you put it somewhere that matters, and keep jq around.
+> Provided as is, without warranty of any kind — use at your own risk.
 
 ## Performance
 
@@ -26,8 +32,8 @@ timed — a faster number means nothing if the bytes differ.
 Together the 27 run in **4.4 s against jq's 21.0 s**, at a median peak of
 **116 MB against 234 MB**. Two kinds of workload go the other way: collecting
 every path of a document at once, and `--stream`. The `--stream` figure counts
-the input file zinq maps into memory rather than what it allocates — read from
-a pipe instead, the same workload peaks at 2.6 MB against jq's 3.5.
+the input file zinq maps into memory rather than what it allocates. Piped,
+with no file to map, that same workload peaks at 2.6 MB against jq's 3.5.
 
 <details>
 <summary>Every measurement</summary>
@@ -68,18 +74,18 @@ a pipe instead, the same workload peaks at 2.6 MB against jq's 3.5.
 
 ### YAML
 
-The same filters read YAML directly, with no conversion step in front of them —
-here over the same corpus rendered as 20 MB of block-style YAML.
+The same filters read YAML directly, with no conversion step in front of them.
+Same corpus, rendered as 20 MB of block-style YAML.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yaml-speed-dark.svg">
   <img alt="Time to run four YAML workloads, zinq against yq (Go) 4.53.3, over 20 MB of block-style YAML. zinq is faster on all four: 0.236 s against 45.315 s projecting a field, 0.205 against 1.179 parse-bound, 0.216 against 1.198 on an edit, and 0.407 against 4.092 rendering YAML back out." src="assets/yaml-speed-light.svg" width="880">
 </picture>
 
-The first workload overstates the gap: yq is slow at collecting results into an
-array specifically, and asked for the same field as a stream it takes 2.3 s
-rather than 45. Read the other three as the fair comparison. Memory is not
-measured for the YAML runs.
+The first workload overstates the gap. yq is slow at collecting results into an
+array specifically: asked for the same field as a stream it takes 2.3 s rather
+than 45. The other three are the fairer comparison. Memory is not measured for
+the YAML runs.
 
 Measured 2026-07-28 against jq 1.8.2 and yq (Go) 4.53.3.
 
@@ -107,7 +113,7 @@ brew install dennisvr/zinq/zinq
 
 ## Usage
 
-The filters and flags are jq's, so existing invocations carry over:
+Same filters and flags as jq:
 
 ```sh
 zinq '.[] | select(.active) | .name' users.json
@@ -115,8 +121,8 @@ zinq -r '.[].name' users.json
 curl -s https://api.example.com/items | zinq -c '.[0]'
 ```
 
-YAML needs no conversion step in front of it. Files ending `.yaml`/`.yml` are
-detected by suffix; `--yaml-input` and `--yaml-output` force it either way:
+`.yaml` and `.yml` files are detected by suffix; `--yaml-input` and
+`--yaml-output` force it either way:
 
 ```sh
 zinq '.spec.replicas' deploy.yaml
@@ -124,6 +130,38 @@ zinq --yaml-output '.metadata.labels.env = "prod"' deploy.yaml
 ```
 
 `zinq --help` lists every flag and the filters implemented so far.
+
+## Gaps and differences
+
+Output matches jq byte for byte wherever zinq answers. Where it doesn't, most
+of it is unfinished rather than intended.
+
+**Not there yet.**
+
+- **YAML merge keys are not merged.** `<<: *anchor` is read as an ordinary key,
+  so on a GitLab CI or Compose file `.job.image` comes back `null` rather than
+  the inherited value — quietly, not as an error. Anchors and aliases on their
+  own (`*ref`) resolve normally.
+- **YAML edits do not preserve comments or layout.** Results are re-emitted as
+  clean block style. Round-tripping needs a lossless syntax tree, which is a
+  bigger change than it looks; use yq meanwhile.
+- **`@base64d` does not validate its input.** jq rejects a string that isn't
+  valid base64; zinq decodes what it can and hands back the bytes, so a
+  truncated or already-decoded field passes through instead of erroring.
+- `input_line_number` is the one jq 1.8.2 builtin not implemented, and `--seq`
+  and `--stream-errors` the two flags not accepted.
+- Strings cannot contain NUL bytes.
+
+**Deliberate.**
+
+- **`~/.jq` is not read.** jq loads it as a personal function library. zinq will
+  not run filter definitions written for another implementation; use `-L` for
+  your own.
+- `1.` is an error where jq reads it as `1`. zinq echoes a number's source text
+  back instead of reformatting it, and `1.` is not valid JSON to emit.
+
+The benchmarks above were run on one machine, an Apple M3 Max. Linux builds
+ship but their numbers are not published.
 
 ## Upgrade & uninstall
 
@@ -134,6 +172,8 @@ brew uninstall zinq
 
 ## Releases
 
-Binaries are prebuilt and attached to this repo's [GitHub Releases](https://github.com/dennisvr/homebrew-zinq/releases). Each release ships one executable per platform — macOS Apple Silicon/Intel and Linux x86_64/ARM64 — with oniguruma statically linked, so there is no separate regex library to install. The macOS builds are self-contained. The Linux builds link glibc dynamically and are produced on Ubuntu 24.04, so they need glibc 2.39 or newer. The `zinq` source is not part of this repository.
+Binaries are prebuilt and attached to this repo's [GitHub Releases](https://github.com/dennisvr/homebrew-zinq/releases). Each release ships one executable per platform — macOS Apple Silicon/Intel and Linux x86_64/ARM64 — with oniguruma statically linked, so there is no separate regex library to install. The macOS builds are self-contained. The Linux builds link glibc dynamically and are produced on Ubuntu 24.04, so they need glibc 2.39 or newer.
+
+The `zinq` source is not public yet. zinq is written in [Galvanized](https://github.com/dennisvr/homebrew-gvcc), a language still under development; the plan is to open the source once that settles.
 
 Releases are published here automatically: CI in the private source repo builds the per-platform binaries, creates the Release on this repo with the tarballs attached, and commits the matching bump to `Formula/zinq.rb`. The formula is therefore generated — don't edit it by hand.
