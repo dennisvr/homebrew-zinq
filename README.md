@@ -174,6 +174,6 @@ brew uninstall zinq
 
 Binaries are prebuilt and attached to this repo's [GitHub Releases](https://github.com/dennisvr/homebrew-zinq/releases). Each release ships one executable per platform — macOS Apple Silicon/Intel and Linux x86_64/ARM64 — with oniguruma statically linked, so there is no separate regex library to install. The macOS builds are self-contained. The Linux builds link glibc dynamically and are produced on Ubuntu 24.04, so they need glibc 2.39 or newer.
 
-The `zinq` source is not public yet. zinq is written in [Galvanized](https://github.com/dennisvr/homebrew-gvcc), a language still under development; the plan is to open the source once that settles.
+The `zinq` source is not public yet. It's written in a language that is itself still under development; the plan is to open the source once that settles.
 
 Releases are published here automatically: CI in the private source repo builds the per-platform binaries, creates the Release on this repo with the tarballs attached, and commits the matching bump to `Formula/zinq.rb`. The formula is therefore generated — don't edit it by hand.

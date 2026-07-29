@@ -1,7 +1,7 @@
 # DO NOT EDIT BY HAND.
 #
 # The version, urls and sha256s below are rewritten on every release by the
-# `release` workflow in the private source repo (dennisvr/galvanized), which
+# `release` workflow in the private source repo, which
 # builds the binaries, attaches the tarballs to a Release on this repo, and
 # pushes the bump here. Two things that workflow's substitutions depend on:
 #   - the version line stays `  version "..."` at two spaces of indent
