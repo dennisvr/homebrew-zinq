@@ -90,11 +90,9 @@ The first workload overstates the speed gap. yq is slow at collecting results
 into an array specifically: asked for the same field as a stream it takes 2.3 s
 rather than 43. The other three are the fairer comparison.
 
-Memory is the wider gap, and it does not depend on that quirk: yq holds
-**1.5 GB to read one field of the first record** of a 20 MB file, and 5.9 GB to
-round-trip the document unchanged. zinq stays in a 143–180 MB band across all
-four — the document is built once and the filter runs over it, so what the
-filter does barely moves the footprint.
+Memory is the wider gap. yq holds **1.5 GB to read one field of the first
+record** of a 20 MB file, and 5.9 GB to round-trip it unchanged. zinq stays
+between 143 and 180 MB on all four.
 
 Measured 2026-07-30 against jq 1.8.2 and yq (Go) 4.53.3.
 
@@ -142,31 +140,27 @@ zinq --yaml-output '.metadata.labels.env = "prod"' deploy.yaml
 
 ## Gaps and differences
 
-Output matches jq byte for byte wherever zinq answers. Where it doesn't, most
-of it is unfinished rather than intended.
+Output matches jq byte for byte, except the two number cases below.
 
 **Not there yet.**
 
-- **YAML edits do not preserve comments or layout.** Results are re-emitted as
-  clean block style. Round-tripping needs a lossless syntax tree, which is a
-  bigger change than it looks; use yq meanwhile.
-- **Arithmetic is IEEE doubles, not decimal.** A number's literal text survives
-  unchanged, so an integer too wide for a double round-trips; but anything
-  COMPUTED from it is a double, where jq 1.8 carries decNumber. `have_decnum`
-  reports false for that reason.
-- **No runtime guard on absurdly deep values.** Input nesting is capped exactly
-  where jq caps it, but a value a filter builds past 10000 levels deep is
-  serialized in full where jq writes `<skipped: too deep>`, and compared rather
-  than refused.
-- **Parse errors say what is wrong, not what a parser generator expected.** The
-  file, line and caret are jq's; the sentence after them is zinq's own where
-  jq's quotes bison's state machine.
+- **YAML edits lose comments and layout.** Output is clean block style; use yq
+  if you need round-tripping.
+- **YAML `.inf`, `-.inf` and `.nan` don't round-trip.** They read as
+  `1.7976931348623157e+308`, its negation, and `null`. yq keeps them. JSON is
+  unaffected.
+- **`have_decnum` is false.** Literal text survives, so a wide integer
+  round-trips, but arithmetic is doubles — as it is in jq. One real difference:
+  `1E1234567890` prints as written, where jq saturates it.
+- **Parse errors are worded differently.** Same file, line and caret; the
+  sentence after them is zinq's, not bison's.
 
 **Deliberate.**
 
-- **`~/.jq` is not read.** jq loads it as a personal function library. zinq will
-  not run filter definitions written for another implementation; use `-L` for
-  your own.
+- **`~/.jq` is not read; `~/.zinq` is.** A file is loaded as a library; a
+  directory is added to the search path.
+- **Three builtins jq 1.8.2 dropped still work:** `leaf_paths`, `pow10` and
+  `toarray`.
 
 The benchmarks above were run on one machine, an Apple M3 Max. Linux builds
 ship but their numbers are not published.
