@@ -9,28 +9,28 @@
 class Zinq < Formula
   desc "JSON and YAML processor compatible with jq"
   homepage "https://github.com/dennisvr/homebrew-zinq"
-  version "0.4.1"
+  version "0.6.0"
   license "Apache-2.0"
 
   on_macos do
     on_arm do
-      url "https://github.com/dennisvr/homebrew-zinq/releases/download/v0.4.1/zinq-0.4.1-arm64-apple-darwin.tar.gz"
-      sha256 "287ffc0ff888c263bc89d6770311dcc919b8066c4e0bca350c5583e670c63ee4"
+      url "https://github.com/dennisvr/homebrew-zinq/releases/download/v0.6.0/zinq-0.6.0-arm64-apple-darwin.tar.gz"
+      sha256 "da135158bc02b2f35ec2a7409e328b1a610ed0ff7b9c26e466aae7fdc2acc621"
     end
     on_intel do
-      url "https://github.com/dennisvr/homebrew-zinq/releases/download/v0.4.1/zinq-0.4.1-x86_64-apple-darwin.tar.gz"
-      sha256 "0f232e39bff5cf932dc4fc33906bfdc1943d99c222a9e9a8ed3177eb9928926a"
+      url "https://github.com/dennisvr/homebrew-zinq/releases/download/v0.6.0/zinq-0.6.0-x86_64-apple-darwin.tar.gz"
+      sha256 "e89b59b1472cc340b5b85d59a087ff764282da3cb0f9cc7f04229416c40b0ee5"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/dennisvr/homebrew-zinq/releases/download/v0.4.1/zinq-0.4.1-aarch64-linux.tar.gz"
-      sha256 "fd08a5d342a5b01fe1e7d940e09fe9e27768f7966c61740fa1ddf0230c8a66c4"
+      url "https://github.com/dennisvr/homebrew-zinq/releases/download/v0.6.0/zinq-0.6.0-aarch64-linux.tar.gz"
+      sha256 "1874a4df8b1401baa09374d845569d7c3fa4f30f59fbad6ea69607f17b12fd55"
     end
     on_intel do
-      url "https://github.com/dennisvr/homebrew-zinq/releases/download/v0.4.1/zinq-0.4.1-x86_64-linux.tar.gz"
-      sha256 "df8fc607f8ebc291a2bb23fc6e42a147f104c6ed18a227802ea526dc70085d23"
+      url "https://github.com/dennisvr/homebrew-zinq/releases/download/v0.6.0/zinq-0.6.0-x86_64-linux.tar.gz"
+      sha256 "b17bf2f528e1c386e1b3b9aa89c48559449db41c0c54d978fc4e1a4a52d1d540"
     end
   end
 
