@@ -20,17 +20,17 @@ timed — a faster number means nothing if the bytes differ.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/speed-dark.svg">
-  <img alt="Time to run each of 27 benchmarks, zinq against jq 1.8.2, grouped into queries, rewriting, reordering, path collection and streaming. zinq is faster on all 27, from 26 ms against 266 ms on .[0] to 0.411 s against 8.763 s on gsub." src="assets/speed-light.svg" width="880">
+  <img alt="Time to run each of 27 benchmarks, zinq against jq 1.8.2, grouped into queries, rewriting, reordering, path collection and streaming. zinq is faster on all 27, from 26 ms against 265 ms on .[0] to 0.386 s against 8.502 s on gsub." src="assets/speed-light.svg" width="880">
 </picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/memory-dark.svg">
-  <img alt="Peak resident memory for the same 27 runs. zinq holds less on 20 of them; jq holds less when collecting every path at once and under --stream." src="assets/memory-light.svg" width="880">
+  <img alt="Peak resident memory for the same 27 runs. zinq holds less on 23 of them; jq holds less on two of the path-collection rows and on --stream's whole-document walks." src="assets/memory-light.svg" width="880">
 </picture>
 
-Together the 27 run in **4.1 s against jq's 20.8 s**, at a median peak of
-**70 MB against 221 MB**. Two kinds of workload go the other way: collecting
-every path of a document at once, and `--stream`. The `--stream` figure counts
+Together the 27 run in **4.0 s against jq's 20.6 s**, at a median peak of
+**66 MB against 220 MB**. Two kinds of workload go the other way: two of the
+collect-every-path rows, and `--stream`. The `--stream` figure counts
 the input file zinq maps into memory rather than what it allocates. Piped,
 with no file to map, that same workload peaks at 2.8 MB against jq's 3.3.
 
@@ -39,33 +39,33 @@ with no file to map, that same workload peaks at 2.8 MB against jq's 3.3.
 
 | Benchmark | zinq | jq | zinq peak | jq peak |
 |---|---:|---:|---:|---:|
-| `.[0]` | 0.026 s | 0.266 s | 26 MB | 221 MB |
-| `[.[] \| .tags \| length]` | 0.040 s | 0.293 s | 66 MB | 229 MB |
-| `[.[] \| .name]` | 0.052 s | 0.365 s | 99 MB | 227 MB |
-| `[.[] \| .score] \| sort \| .[-1]` | 0.081 s | 0.444 s | 98 MB | 232 MB |
-| `.` (pretty-print) | 0.080 s | 0.888 s | 116 MB | 229 MB |
-| `test("item-(?=0000)")` | 0.113 s | 0.577 s | 64 MB | 221 MB |
-| `[.[] \| select(.active) \| {name, score}]` | 0.144 s | 0.503 s | 173 MB | 280 MB |
-| `[.[] \| .tags[]] \| unique` | 0.144 s | 0.792 s | 145 MB | 253 MB |
-| `test("^item-0000[0-9]3$")` | 0.182 s | 0.651 s | 64 MB | 221 MB |
-| `gsub("[0-9]"; "#")` | 0.411 s | 8.763 s | 100 MB | 246 MB |
-| `max_by(.score) \| .id` | 0.056 s | 0.341 s | 122 MB | 225 MB |
-| `min_by(.score) \| .id` | 0.056 s | 0.335 s | 122 MB | 232 MB |
-| `unique_by(.name) \| length` | 0.080 s | 0.377 s | 156 MB | 231 MB |
-| `sort_by(.name) \| last` | 0.078 s | 0.373 s | 156 MB | 231 MB |
-| `group_by(.name) \| length` | 0.100 s | 0.393 s | 214 MB | 283 MB |
-| `sort_by(.id) \| last` | 0.142 s | 0.364 s | 156 MB | 231 MB |
-| `[paths] \| length` ¹ | 0.028 s | 0.120 s | 68 MB | 48 MB |
-| `reduce (inputs\|paths) as $p (0;.+1)` ¹ | 0.031 s | 0.130 s | 12 MB | 24 MB |
-| `[path(..)] \| length` ¹ | 0.033 s | 0.090 s | 70 MB | 49 MB |
-| `[tostream] \| length` ¹ | 0.054 s | 0.293 s | 144 MB | 58 MB |
-| `[paths(type=="number")]` ¹ | 0.060 s | 0.121 s | 68 MB | 32 MB |
+| `.[0]` | 0.026 s | 0.265 s | 26 MB | 218 MB |
+| `[.[] \| .tags \| length]` | 0.043 s | 0.311 s | 66 MB | 228 MB |
+| `[.[] \| .name]` | 0.047 s | 0.367 s | 80 MB | 228 MB |
+| `[.[] \| .score] \| sort \| .[-1]` | 0.067 s | 0.447 s | 80 MB | 226 MB |
+| `.` (pretty-print) | 0.084 s | 0.913 s | 116 MB | 229 MB |
+| `test("item-(?=0000)")` | 0.114 s | 0.584 s | 64 MB | 220 MB |
+| `[.[] \| select(.active) \| {name, score}]` | 0.142 s | 0.505 s | 141 MB | 279 MB |
+| `[.[] \| .tags[]] \| unique` | 0.125 s | 0.782 s | 98 MB | 264 MB |
+| `test("^item-0000[0-9]3$")` | 0.180 s | 0.632 s | 64 MB | 215 MB |
+| `gsub("[0-9]"; "#")` | 0.386 s | 8.502 s | 81 MB | 240 MB |
+| `max_by(.score) \| .id` | 0.051 s | 0.347 s | 92 MB | 232 MB |
+| `min_by(.score) \| .id` | 0.051 s | 0.348 s | 92 MB | 236 MB |
+| `unique_by(.name) \| length` | 0.078 s | 0.385 s | 113 MB | 252 MB |
+| `sort_by(.name) \| last` | 0.076 s | 0.379 s | 111 MB | 251 MB |
+| `group_by(.name) \| length` | 0.092 s | 0.386 s | 152 MB | 283 MB |
+| `sort_by(.id) \| last` | 0.063 s | 0.371 s | 114 MB | 248 MB |
+| `[paths] \| length` ¹ | 0.025 s | 0.122 s | 41 MB | 50 MB |
+| `reduce (inputs\|paths) as $p (0;.+1)` ¹ | 0.033 s | 0.132 s | 12 MB | 24 MB |
+| `[path(..)] \| length` ¹ | 0.025 s | 0.087 s | 43 MB | 48 MB |
+| `[tostream] \| length` ¹ | 0.044 s | 0.284 s | 86 MB | 62 MB |
+| `[paths(type=="number")]` ¹ | 0.056 s | 0.118 s | 42 MB | 32 MB |
 | `--stream -n first(inputs)` | 0.002 s | 0.003 s | 1.9 MB | 2.4 MB |
-| `paths` ¹ | 0.019 s | 0.176 s | 12 MB | 24 MB |
-| `tostream` ¹ | 0.026 s | 0.394 s | 12 MB | 25 MB |
-| `fromstream(inputs)` ¹ | 0.043 s | 0.352 s | 37 MB | 25 MB |
-| `--stream .` | 0.994 s | 1.662 s | 20 MB | 3 MB |
-| `--stream select(length==2)` | 1.026 s | 1.781 s | 20 MB | 4 MB |
+| `paths` ¹ | 0.023 s | 0.175 s | 12 MB | 24 MB |
+| `tostream` ¹ | 0.030 s | 0.394 s | 12 MB | 26 MB |
+| `fromstream(inputs)` ¹ | 0.045 s | 0.350 s | 23 MB | 27 MB |
+| `--stream .` | 1.019 s | 1.664 s | 20 MB | 4 MB |
+| `--stream select(length==2)` | 1.054 s | 1.786 s | 20 MB | 4 MB |
 
 ¹ On a 1.8 MB / 20k-record corpus; everything else on 18 MB / 200k records.
 
@@ -78,23 +78,23 @@ Same corpus, rendered as 20 MB of block-style YAML.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yaml-speed-dark.svg">
-  <img alt="Time to run four YAML workloads, zinq against yq (Go) 4.53.3, over 20 MB of block-style YAML. zinq is faster on all four: 0.149 s against 42.775 s projecting a field, 0.129 against 1.212 parse-bound, 0.140 against 1.225 on an edit, and 0.297 against 4.107 rendering YAML back out." src="assets/yaml-speed-light.svg" width="880">
+  <img alt="Time to run four YAML workloads, zinq against yq (Go) 4.53.3, over 20 MB of block-style YAML. zinq is faster on all four: 0.140 s against 41.904 s projecting a field, 0.121 against 1.157 parse-bound, 0.129 against 1.155 on an edit, and 0.294 against 3.782 rendering YAML back out." src="assets/yaml-speed-light.svg" width="880">
 </picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/yaml-memory-dark.svg">
-  <img alt="Peak resident memory for the same four YAML runs. zinq holds less on all four: 180 MB against yq's 2608 projecting a field, 143 against 1482 parse-bound, 151 against 1480 on an edit, and 158 against 5888 rendering YAML back out." src="assets/yaml-memory-light.svg" width="880">
+  <img alt="Peak resident memory for the same four YAML runs. zinq holds less on all four: 162 MB against yq's 2674 projecting a field, 143 against 1483 parse-bound, 162 against 1479 on an edit, and 158 against 5981 rendering YAML back out." src="assets/yaml-memory-light.svg" width="880">
 </picture>
 
 The first workload overstates the speed gap. yq is slow at collecting results
 into an array specifically: asked for the same field as a stream it takes 2.3 s
-rather than 43. The other three are the fairer comparison.
+rather than 42. The other three are the fairer comparison.
 
 Memory is the wider gap. yq holds **1.5 GB to read one field of the first
-record** of a 20 MB file, and 5.9 GB to round-trip it unchanged. zinq stays
-between 143 and 180 MB on all four.
+record** of a 20 MB file, and 6.0 GB to round-trip it unchanged. zinq stays
+between 143 and 162 MB on all four.
 
-Measured 2026-07-30 against jq 1.8.2 and yq (Go) 4.53.3.
+Measured 2026-08-01 against jq 1.8.2 and yq (Go) 4.53.3.
 
 ## Install
 
