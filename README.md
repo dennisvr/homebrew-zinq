@@ -1,17 +1,22 @@
 # homebrew-zinq
 
-`zinq` is a jq-compatible JSON and YAML processor.
+`zinq` is a fast, low-memory, jq-compatible JSON and YAML processor.
 
 Existing jq scripts should just work: same filters, same flags, same output,
-same exit codes. Every jq 1.8.2 builtin is implemented, and the output is
-checked against real jq by differential tests and by jq's own test suite.
+same exit codes — typically in a fifth of the time and a third of the memory.
+Every jq 1.8.2 builtin is implemented, and the output is checked against real jq
+by differential tests and by jq's own test suite.
 
-It doesn't inherit your jq setup, though. `~/.jq` isn't read, and a few other
-things differ; they're listed under [Gaps and differences](#gaps-and-differences).
+Reads `~/.zinq`; copy your `~/.jq` over if you want to reuse it.
+A few other things differ; they're listed under [Gaps and differences](#gaps-and-differences).
 
 > **zinq is beta.** It's pre-1.0 and hasn't seen much production use yet. Check
 > its output before you put it somewhere that matters, and keep jq around.
 > Provided as is, without warranty of any kind — use at your own risk.
+
+zinq is Apache-2.0. The source isn't public yet — see
+[Releases](#releases) — but the licence applies to the binaries you install
+today, not just to whatever gets published later.
 
 ## Performance
 
@@ -30,9 +35,7 @@ timed — a faster number means nothing if the bytes differ.
 
 Together the 27 run in **3.9 s against jq's 20.3 s**, at a median peak of
 **66 MB against 218 MB**. Two kinds of workload go the other way: two of the
-collect-every-path rows, and `--stream`. The `--stream` figure counts
-the input file zinq maps into memory rather than what it allocates. Piped,
-with no file to map, that same workload peaks at 2.8 MB against jq's 3.3.
+collect-every-path rows, and `--stream`.
 
 <details>
 <summary>Every measurement</summary>
@@ -60,14 +63,17 @@ with no file to map, that same workload peaks at 2.8 MB against jq's 3.3.
 | `[path(..)] \| length` ¹ | 0.025 s | 0.087 s | 43 MB | 48 MB |
 | `[tostream] \| length` ¹ | 0.043 s | 0.283 s | 86 MB | 58 MB |
 | `[paths(type=="number")]` ¹ | 0.055 s | 0.117 s | 42 MB | 32 MB |
-| `--stream -n first(inputs)` | 0.003 s | 0.003 s | 2.0 MB | 2.4 MB |
+| `--stream -n first(inputs)` | 0.003 s | 0.003 s | 2.0 MB ² | 2.4 MB |
 | `paths` ¹ | 0.024 s | 0.176 s | 12 MB | 24 MB |
 | `tostream` ¹ | 0.032 s | 0.397 s | 12 MB | 26 MB |
 | `fromstream(inputs)` ¹ | 0.043 s | 0.341 s | 23 MB | 25 MB |
-| `--stream .` | 1.028 s | 1.623 s | 20 MB | 3 MB |
-| `--stream select(length==2)` | 1.016 s | 1.745 s | 20 MB | 3 MB |
+| `--stream .` | 1.028 s | 1.623 s | 20 MB ² | 3 MB |
+| `--stream select(length==2)` | 1.016 s | 1.745 s | 20 MB ² | 3 MB |
 
 ¹ On a 1.8 MB / 20k-record corpus; everything else on 18 MB / 200k records.
+
+² Counts the input file zinq maps into memory, not what it allocates. Piped,
+with no file to map, `--stream .` peaks at 2.8 MB against jq's 3.3.
 
 </details>
 
@@ -86,16 +92,24 @@ Same corpus, rendered as 20 MB of block-style YAML.
   <img alt="Peak resident memory for the same four YAML runs. zinq holds less on all four: 162 MB against yq's 2674 projecting a field, 143 against 1483 parse-bound, 162 against 1479 on an edit, and 158 against 5981 rendering YAML back out." src="assets/yaml-memory-light.svg" width="880">
 </picture>
 
-The first workload overstates the speed gap. yq is slow at collecting results
-into an array specifically: asked for the same field as a stream it takes 2.3 s
+| Workload | zinq | yq | zinq peak | yq peak |
+|---|---:|---:|---:|---:|
+| Project a field into an array | 0.140 s | 41.904 s | 162 MB | 2674 MB |
+| Parse-bound (read one field of the first record) | 0.121 s | 1.157 s | 143 MB | 1483 MB |
+| Edit a value in place | 0.129 s | 1.155 s | 162 MB | 1479 MB |
+| Round-trip YAML back out | 0.294 s | 3.782 s | 158 MB | 5981 MB |
+
+The first row overstates the speed gap. yq is slow at collecting results into
+an array specifically: asked for the same field as a stream it takes 2.3 s
 rather than 42. The other three are the fairer comparison.
 
-Memory is the wider gap. yq holds **1.5 GB to read one field of the first
-record** of a 20 MB file, and 6.0 GB to round-trip it unchanged. zinq stays
-between 143 and 162 MB on all four.
+Memory is the wider gap, and it holds across all four. yq needs 1.5 GB to read
+one field of the first record of a 20 MB file, and 6.0 GB to round-trip it
+unchanged. zinq stays between 143 and 162 MB.
 
 JSON measured 2026-08-02 against jq 1.8.2; YAML measured 2026-08-01
-against yq (Go) 4.53.3.
+against yq (Go) 4.53.3. One machine, an Apple M3 Max. Linux builds ship but
+their numbers are not published.
 
 ## Install
 
@@ -141,7 +155,7 @@ zinq --yaml-output '.metadata.labels.env = "prod"' deploy.yaml
 
 ## Gaps and differences
 
-Output matches jq byte for byte, except the two number cases below.
+Output matches jq byte for byte except where noted here.
 
 **Not there yet.**
 
@@ -158,13 +172,30 @@ Output matches jq byte for byte, except the two number cases below.
 
 **Deliberate.**
 
-- **`~/.jq` is not read; `~/.zinq` is.** A file is loaded as a library; a
-  directory is added to the search path.
+- **`~/.zinq` replaces `~/.jq`.** A file is loaded as a library; a directory is
+  added to the search path.
 - **Three builtins jq 1.8.2 dropped still work:** `leaf_paths`, `pow10` and
   `toarray`.
 
-The benchmarks above were run on one machine, an Apple M3 Max. Linux builds
-ship but their numbers are not published.
+## Releases
+
+Binaries are prebuilt and attached to this repo's
+[GitHub Releases](https://github.com/dennisvr/homebrew-zinq/releases). Each
+release ships one executable per platform — macOS Apple Silicon/Intel and Linux
+x86_64/ARM64 — with oniguruma statically linked, so there is no separate regex
+library to install. The macOS builds are self-contained. The Linux builds link
+glibc dynamically and are produced on Ubuntu 24.04, so they need glibc 2.39 or
+newer.
+
+The `zinq` source is not public yet. It's written in a language that is itself
+still under development; the plan is to open the source once that settles. The
+binaries are Apache-2.0 in the meantime, and each tarball carries a copy of the
+licence.
+
+Releases are published here automatically: CI in the private source repo builds
+the per-platform binaries, creates the Release on this repo with the tarballs
+attached, and commits the matching bump to `Formula/zinq.rb`. The formula is
+therefore generated — don't edit it by hand.
 
 ## Upgrade & uninstall
 
@@ -173,10 +204,6 @@ brew upgrade zinq
 brew uninstall zinq
 ```
 
-## Releases
+## Licence
 
-Binaries are prebuilt and attached to this repo's [GitHub Releases](https://github.com/dennisvr/homebrew-zinq/releases). Each release ships one executable per platform — macOS Apple Silicon/Intel and Linux x86_64/ARM64 — with oniguruma statically linked, so there is no separate regex library to install. The macOS builds are self-contained. The Linux builds link glibc dynamically and are produced on Ubuntu 24.04, so they need glibc 2.39 or newer.
-
-The `zinq` source is not public yet. It's written in a language that is itself still under development; the plan is to open the source once that settles.
-
-Releases are published here automatically: CI in the private source repo builds the per-platform binaries, creates the Release on this repo with the tarballs attached, and commits the matching bump to `Formula/zinq.rb`. The formula is therefore generated — don't edit it by hand.
+Apache License 2.0. See [LICENSE](LICENSE).
